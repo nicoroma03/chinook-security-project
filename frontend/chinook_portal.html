@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinook Employee Portal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: 0 auto; background: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        h1, h2 { margin-bottom: 15px; }
+        .hidden { display: none; }
+        input, button { padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 3px; }
+        input { width: 100%; max-width: 300px; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; padding: 10px 20px; }
+        button:hover { background: #0056b3; }
+        button.secondary { background: #6c757d; }
+        button.secondary:hover { background: #5a6268; }
+        .error { color: red; margin: 10px 0; }
+        .success { color: green; margin: 10px 0; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .filters { margin: 15px 0; padding: 10px; background: #f9f9f9; border-radius: 3px; }
+        .filters input { margin-right: 10px; max-width: 150px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f5f5f5; font-weight: bold; }
+        .info { background: #e7f3ff; padding: 10px; border-radius: 3px; margin: 10px 0; }
+        .button-group { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="container">
+        <h1>Chinook Employee Login</h1>
+        <div>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="loginError" class="error"></div>
+        
+        <hr style="margin: 20px 0;">
+        
+        <h2>Create New User Account</h2>
+        <p style="margin-bottom: 10px; color: #666; font-size: 14px;">
+            Create a new employee account. You'll need the authorization password.
+        </p>
+        <div>
+            <input type="text" id="createUsername" placeholder="Username">
+            <input type="number" id="createEmployeeId" placeholder="Employee ID">
+            <input type="password" id="createAuthPassword" placeholder="Authorization Password">
+            <button onclick="createUser()">Create User</button>
+        </div>
+        <div id="createError" class="error"></div>
+        <div id="createSuccess" class="success"></div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="container hidden">
+        <div class="header">
+            <div>
+                <h1>Customer Dashboard</h1>
+                <div id="userInfo" class="info"></div>
+            </div>
+            <div class="button-group">
+                <button onclick="showChangePassword()">Change Password</button>
+                <button class="secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <h3>Search Customers</h3>
+            <input type="text" id="filterName" placeholder="Name">
+            <input type="text" id="filterCompany" placeholder="Company">
+            <input type="text" id="filterCity" placeholder="City">
+            <input type="text" id="filterCountry" placeholder="Country">
+            <button onclick="searchCustomers()">Search</button>
+            <button class="secondary" onclick="clearFilters()">Clear</button>
+        </div>
+
+        <!-- Customer Table -->
+        <div id="customerResults">
+            <p>Click search to load customers</p>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordScreen" class="container hidden">
+        <h2>Change Password</h2>
+        <div>
+            <input type="password" id="currentPassword" placeholder="Current Password">
+            <input type="password" id="newPassword" placeholder="New Password">
+            <div class="button-group">
+                <button onclick="changePassword()">Change Password</button>
+                <button class="secondary" onclick="cancelChangePassword()">Cancel</button>
+            </div>
+        </div>
+        <div id="passwordError" class="error"></div>
+        <div id="passwordSuccess" class="success"></div>
+        <p style="margin-top: 10px; font-size: 12px; color: #666;">
+            Password must be 6-14 characters and contain at least 3 of: uppercase, lowercase, numbers, special characters
+        </p>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000';
+        let accessToken = '';
+        let refreshToken = '';
+        let isManager = false;
+        let sessionTimer = null;
+        let refreshTimer = null;
+
+        // Create new user (no authentication required)
+        async function createUser() {
+            const username = document.getElementById('createUsername').value;
+            const employeeId = document.getElementById('createEmployeeId').value;
+            const authPassword = document.getElementById('createAuthPassword').value;
+            const errorDiv = document.getElementById('createError');
+            const successDiv = document.getElementById('createSuccess');
+            
+            errorDiv.textContent = '';
+            successDiv.textContent = '';
+
+            if (!username || !employeeId || !authPassword) {
+                errorDiv.textContent = 'All fields are required';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_URL}/create_new_user`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: username,
+                        employee_id: parseInt(employeeId),
+                        password: authPassword
+                    })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorDiv.textContent = data.detail || 'User creation failed';
+                    return;
+                }
+
+                successDiv.textContent = `User "${username}" created successfully!`;
+                document.getElementById('createUsername').value = '';
+                document.getElementById('createEmployeeId').value = '';
+                document.getElementById('createAuthPassword').value = '';
+            } catch (err) {
+                errorDiv.textContent = 'Network error: ' + err.message;
+            }
+        }
+
+        // Login
+        async function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorDiv = document.getElementById('loginError');
+            errorDiv.textContent = '';
+
+            try {
+                const res = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (!res.ok) {
+                    const error = await res.json();
+                    errorDiv.textContent = error.detail || 'Login failed';
+                    return;
+                }
+
+                const data = await res.json();
+                accessToken = data.access_token;
+                refreshToken = data.refresh_token;
+                isManager = data.is_manager;
+
+                showDashboard(username);
+                setupTimers();
+            } catch (err) {
+                errorDiv.textContent = 'Network error: ' + err.message;
+            }
+        }
+
+        // Show Dashboard
+        function showDashboard(username) {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('userInfo').textContent = 
+                `Logged in as: ${username} | Role: ${isManager ? 'Manager' : 'Employee'}`;
+            searchCustomers();
+        }
+
+        // Setup session and refresh timers
+        function setupTimers() {
+            clearTimers();
+            
+            if (isManager) {
+                // Managers: refresh token every 4 minutes (before 5 min expiry)
+                refreshTimer = setInterval(autoRefreshToken, 4 * 60 * 1000);
+            } else {
+                // Non-managers: logout after 2 minutes
+                sessionTimer = setTimeout(() => {
+                    alert('Session expired due to inactivity');
+                    logout();
+                }, 2 * 60 * 1000);
+            }
+        }
+
+        function clearTimers() {
+            if (sessionTimer) clearTimeout(sessionTimer);
+            if (refreshTimer) clearInterval(refreshTimer);
+        }
+
+        // Auto refresh token for managers
+        async function autoRefreshToken() {
+            try {
+                const res = await fetch(`${API_URL}/refresh?refresh_token=${refreshToken}`, {
+                    method: 'POST'
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    accessToken = data.access_token;
+                    refreshToken = data.refresh_token;
+                } else {
+                    alert('Session expired. Please login again.');
+                    logout();
+                }
+            } catch (err) {
+                console.error('Refresh failed:', err);
+            }
+        }
+
+        // Search customers
+        async function searchCustomers() {
+            const filters = {
+                name: document.getElementById('filterName').value || null,
+                company: document.getElementById('filterCompany').value || null,
+                city: document.getElementById('filterCity').value || null,
+                country: document.getElementById('filterCountry').value || null
+            };
+
+            try {
+                const res = await fetch(`${API_URL}/customers/search`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                    body: JSON.stringify(filters)
+                });
+
+                if (!res.ok) {
+                    throw new Error('Search failed');
+                }
+
+                const data = await res.json();
+                displayCustomers(data.customers);
+            } catch (err) {
+                document.getElementById('customerResults').innerHTML = 
+                    `<p class="error">Error loading customers: ${err.message}</p>`;
+            }
+        }
+
+        // Display customers in table
+        function displayCustomers(customers) {
+            if (customers.length === 0) {
+                document.getElementById('customerResults').innerHTML = '<p>No customers found</p>';
+                return;
+            }
+
+            let html = `<p>Found ${customers.length} customer(s)</p>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>Country</th>
+                    </tr>`;
+
+            customers.forEach(c => {
+                html += `<tr>
+                    <td>${c.CustomerId}</td>
+                    <td>${c.FirstName} ${c.LastName}</td>
+                    <td>${c.Company || '-'}</td>
+                    <td>${c.Email}</td>
+                    <td>${c.Phone || '-'}</td>
+                    <td>${c.City || '-'}</td>
+                    <td>${c.Country}</td>
+                </tr>`;
+            });
+
+            html += '</table>';
+            document.getElementById('customerResults').innerHTML = html;
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.getElementById('filterName').value = '';
+            document.getElementById('filterCompany').value = '';
+            document.getElementById('filterCity').value = '';
+            document.getElementById('filterCountry').value = '';
+            searchCustomers();
+        }
+
+        // Show change password screen
+        function showChangePassword() {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('changePasswordScreen').classList.remove('hidden');
+            document.getElementById('passwordError').textContent = '';
+            document.getElementById('passwordSuccess').textContent = '';
+        }
+
+        // Cancel change password
+        function cancelChangePassword() {
+            document.getElementById('changePasswordScreen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+        }
+
+        // Change password
+        async function changePassword() {
+            const current = document.getElementById('currentPassword').value;
+            const newPass = document.getElementById('newPassword').value;
+            const errorDiv = document.getElementById('passwordError');
+            const successDiv = document.getElementById('passwordSuccess');
+            
+            errorDiv.textContent = '';
+            successDiv.textContent = '';
+
+            try {
+                const res = await fetch(`${API_URL}/change_password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                    body: JSON.stringify({
+                        current_password: current,
+                        new_password: newPass
+                    })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorDiv.textContent = data.detail || 'Password change failed';
+                    return;
+                }
+
+                successDiv.textContent = 'Password changed successfully!';
+                setTimeout(() => {
+                    document.getElementById('currentPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    cancelChangePassword();
+                }, 2000);
+            } catch (err) {
+                errorDiv.textContent = 'Network error: ' + err.message;
+            }
+        }
+
+        // Logout
+        async function logout() {
+            try {
+                await fetch(`${API_URL}/logout`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+            } catch (err) {
+                console.error('Logout error:', err);
+            }
+
+            clearTimers();
+            accessToken = '';
+            refreshToken = '';
+            isManager = false;
+
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('changePasswordScreen').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginError').textContent = '';
+        }
+
+        // Reset activity timer on user interaction (for non-managers)
+        document.addEventListener('click', () => {
+            if (!isManager && sessionTimer) {
+                setupTimers();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+2026-01-06 15:22:11 | SECURITY | WARNING | Login failed - user not found: IT Support - example
+2026-01-07 10:32:36 | SECURITY | WARNING | Login failed - invalid password for user: IT Staff 8 - example
+2026-01-07 10:32:44 | SECURITY | WARNING | Login failed - user not found: IT Staff 8 - test
+2026-01-07 10:32:50 | SECURITY | WARNING | Login failed - invalid password for user: IT Staff 8 - example
+2026-01-07 10:33:07 | SECURITY | WARNING | Login failed - invalid password for user: IT Staff 8 - example
+2026-01-07 10:36:06 | SECURITY | ERROR | Unexpected error during token validation: Signature has expired
+2026-01-07 10:38:58 | SECURITY | WARNING | Token validation failed: not enough values to unpack (expected 2, got 1)
+2026-01-07 10:43:46 | SECURITY | WARNING | Token validation failed: not enough values to unpack (expected 2, got 1)
+2026-01-07 10:46:05 | SECURITY | WARNING | Token validation failed: not enough values to unpack (expected 2, got 1)
+2026-01-07 15:24:35 | SECURITY | WARNING | User creation failed - incorrect authorization password

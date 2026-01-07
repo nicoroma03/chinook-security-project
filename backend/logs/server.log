@@ -1,0 +1,284 @@
+2026-01-06 15:20:09 | root | INFO | ============================================================
+2026-01-06 15:20:09 | root | INFO | SERVER STARTING
+2026-01-06 15:20:09 | root | INFO | Timestamp: 2026-01-06T14:20:09.113454+00:00
+2026-01-06 15:20:09 | root | INFO | ============================================================
+2026-01-06 15:22:11 | activity | INFO | Login attempt for user: IT Support - example
+2026-01-06 15:22:11 | security | WARNING | Login failed - user not found: IT Support - example
+2026-01-06 15:23:34 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-06 15:23:35 | activity | INFO | User authenticated successfully: IT Staff 8 - example
+2026-01-06 15:23:35 | activity | INFO | Tokens generated for user: IT Staff 8 - example
+2026-01-06 15:23:35 | activity | INFO | Refresh token stored for user: IT Staff 8 - example
+2026-01-06 15:23:35 | activity | INFO | Manager check for IT Staff 8 - example: False
+2026-01-06 15:23:35 | activity | INFO | Login successful for user: IT Staff 8 - example
+2026-01-06 15:24:05 | activity | INFO | Token refresh attempt
+2026-01-06 15:24:05 | activity | INFO | Refresh token decoded for user: IT Staff 8 - example
+2026-01-06 15:24:05 | error | ERROR | Unexpected error during token refresh for IT Staff 8 - example: no such table: refresh_tokens
+Traceback (most recent call last):
+  File "/home/nicola/code/supsi/security/chinook-project/backend/server.py", line 230, in refresh
+    expires_at_str = get_expiration_of_token_hash(token_hash)
+  File "/home/nicola/code/supsi/security/chinook-project/backend/db.py", line 140, in get_expiration_of_token_hash
+    cur.execute(
+    ~~~~~~~~~~~^
+        """
+        ^^^
+    ...<4 lines>...
+        (token_hash,)
+        ^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.OperationalError: no such table: refresh_tokens
+2026-01-06 15:25:15 | root | INFO | ============================================================
+2026-01-06 15:25:15 | root | INFO | SERVER SHUTTING DOWN
+2026-01-06 15:25:15 | root | INFO | Timestamp: 2026-01-06T14:25:15.719457+00:00
+2026-01-06 15:25:15 | root | INFO | ============================================================
+2026-01-06 15:31:39 | root | INFO | ============================================================
+2026-01-06 15:31:39 | root | INFO | SERVER STARTING
+2026-01-06 15:31:39 | root | INFO | Timestamp: 2026-01-06T14:31:39.037015+00:00
+2026-01-06 15:31:39 | root | INFO | ============================================================
+2026-01-06 15:34:38 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-06 15:34:39 | activity | INFO | User authenticated successfully: IT Staff 8 - example
+2026-01-06 15:34:39 | activity | INFO | Tokens generated for user: IT Staff 8 - example
+2026-01-06 15:34:39 | activity | INFO | Refresh token stored for user: IT Staff 8 - example
+2026-01-06 15:34:39 | activity | INFO | Manager check for IT Staff 8 - example: False
+2026-01-06 15:34:39 | activity | INFO | Login successful for user: IT Staff 8 - example
+2026-01-06 15:34:49 | activity | INFO | Token refresh attempt
+2026-01-06 15:34:49 | activity | INFO | Refresh token decoded for user: IT Staff 8 - example
+2026-01-06 15:34:49 | activity | INFO | Old refresh token invalidated for user: IT Staff 8 - example
+2026-01-06 15:34:49 | activity | INFO | New tokens generated for user: IT Staff 8 - example
+2026-01-06 15:34:49 | activity | INFO | Token refresh successful for user: IT Staff 8 - example
+2026-01-06 15:34:49 | activity | INFO | Manager check for IT Staff 8 - example: False
+2026-01-06 15:37:16 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 15:37:16 | activity | INFO | Logout initiated for user: IT Staff 8 - example
+2026-01-06 15:37:16 | activity | INFO | Logout successful for user: IT Staff 8 - example
+2026-01-06 15:53:59 | root | INFO | ============================================================
+2026-01-06 15:53:59 | root | INFO | SERVER SHUTTING DOWN
+2026-01-06 15:53:59 | root | INFO | Timestamp: 2026-01-06T14:53:59.272349+00:00
+2026-01-06 15:53:59 | root | INFO | ============================================================
+2026-01-06 16:53:18 | root | INFO | ============================================================
+2026-01-06 16:53:18 | root | INFO | SERVER STARTING
+2026-01-06 16:53:18 | root | INFO | Timestamp: 2026-01-06T15:53:18.368643+00:00
+2026-01-06 16:53:18 | root | INFO | ============================================================
+2026-01-06 17:01:38 | root | INFO | ============================================================
+2026-01-06 17:01:38 | root | INFO | SERVER SHUTTING DOWN
+2026-01-06 17:01:38 | root | INFO | Timestamp: 2026-01-06T16:01:38.286613+00:00
+2026-01-06 17:01:38 | root | INFO | ============================================================
+2026-01-06 17:08:05 | root | INFO | ============================================================
+2026-01-06 17:08:05 | root | INFO | SERVER STARTING
+2026-01-06 17:08:05 | root | INFO | Timestamp: 2026-01-06T16:08:05.568297+00:00
+2026-01-06 17:08:05 | root | INFO | ============================================================
+2026-01-06 17:08:31 | root | INFO | ============================================================
+2026-01-06 17:08:31 | root | INFO | SERVER SHUTTING DOWN
+2026-01-06 17:08:31 | root | INFO | Timestamp: 2026-01-06T16:08:31.264478+00:00
+2026-01-06 17:08:31 | root | INFO | ============================================================
+2026-01-06 17:08:50 | root | INFO | ============================================================
+2026-01-06 17:08:50 | root | INFO | SERVER STARTING
+2026-01-06 17:08:50 | root | INFO | Timestamp: 2026-01-06T16:08:50.891853+00:00
+2026-01-06 17:08:50 | root | INFO | ============================================================
+2026-01-06 17:08:53 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | User authenticated successfully: IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | Manager check for IT Staff 8 - example: False
+2026-01-06 17:08:53 | activity | INFO | Generating tokens for IT Staff 8 - example (Manager: False) - Duration: 2m
+2026-01-06 17:08:53 | activity | INFO | Tokens generated for user: IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | Refresh token stored for user: IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | Login successful for user: IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:08:53 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:06 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:06 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:06 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:07 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:07 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:07 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:10 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:10 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:10 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:11 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:11 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:11 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:11 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:11 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:11 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:18 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:18 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:18 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:18 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:18 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:18 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:19 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:19 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:19 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:19 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:19 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-06 17:09:19 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-06 17:09:25 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-06 17:09:25 | activity | INFO | Logout initiated for user: IT Staff 8 - example
+2026-01-06 17:09:25 | activity | INFO | Logout successful for user: IT Staff 8 - example
+2026-01-06 17:09:49 | root | INFO | ============================================================
+2026-01-06 17:09:49 | root | INFO | SERVER SHUTTING DOWN
+2026-01-06 17:09:49 | root | INFO | Timestamp: 2026-01-06T16:09:49.193913+00:00
+2026-01-06 17:09:49 | root | INFO | ============================================================
+2026-01-07 10:31:27 | root | INFO | ============================================================
+2026-01-07 10:31:27 | root | INFO | SERVER STARTING
+2026-01-07 10:31:27 | root | INFO | Timestamp: 2026-01-07T09:31:27.371863+00:00
+2026-01-07 10:31:27 | root | INFO | ============================================================
+2026-01-07 10:32:36 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-07 10:32:36 | security | WARNING | Login failed - invalid password for user: IT Staff 8 - example
+2026-01-07 10:32:44 | activity | INFO | Login attempt for user: IT Staff 8 - test
+2026-01-07 10:32:44 | security | WARNING | Login failed - user not found: IT Staff 8 - test
+2026-01-07 10:32:50 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-07 10:32:50 | security | WARNING | Login failed - invalid password for user: IT Staff 8 - example
+2026-01-07 10:33:07 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-07 10:33:07 | security | WARNING | Login failed - invalid password for user: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Login attempt for user: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | User authenticated successfully: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Manager check for IT Staff 8 - example: False
+2026-01-07 10:33:23 | activity | INFO | Generating tokens for IT Staff 8 - example (Manager: False) - Duration: 2m
+2026-01-07 10:33:23 | activity | INFO | Tokens generated for user: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Refresh token stored for user: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Login successful for user: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-07 10:33:23 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-07 10:33:25 | activity | INFO | Token validated for user: IT Staff 8 - example
+2026-01-07 10:33:25 | activity | INFO | Customer search initiated by IT Staff 8 - example
+2026-01-07 10:33:25 | activity | INFO | Search returned 0 results for IT Staff 8 - example
+2026-01-07 10:36:06 | security | ERROR | Unexpected error during token validation: Signature has expired
+2026-01-07 10:38:58 | security | WARNING | Token validation failed: not enough values to unpack (expected 2, got 1)
+2026-01-07 10:43:46 | security | WARNING | Token validation failed: not enough values to unpack (expected 2, got 1)
+2026-01-07 10:46:05 | security | WARNING | Token validation failed: not enough values to unpack (expected 2, got 1)
+2026-01-07 11:01:25 | root | INFO | ============================================================
+2026-01-07 11:01:25 | root | INFO | SERVER SHUTTING DOWN
+2026-01-07 11:01:25 | root | INFO | Timestamp: 2026-01-07T10:01:25.503311+00:00
+2026-01-07 11:01:25 | root | INFO | ============================================================
+2026-01-07 11:01:26 | root | INFO | ============================================================
+2026-01-07 11:01:26 | root | INFO | SERVER STARTING
+2026-01-07 11:01:26 | root | INFO | Timestamp: 2026-01-07T10:01:26.901055+00:00
+2026-01-07 11:01:26 | root | INFO | ============================================================
+2026-01-07 11:01:44 | activity | INFO | User creation attempt - username: Manager 1, employee_id: 1
+2026-01-07 11:01:44 | activity | INFO | Employee validated for user creation
+2026-01-07 11:01:44 | activity | INFO | User created successfully - username: Manager 1, employee_id: 1
+2026-01-07 11:01:59 | activity | INFO | Login attempt for user: Manager 1
+2026-01-07 11:01:59 | activity | INFO | User authenticated successfully: Manager 1
+2026-01-07 11:01:59 | activity | INFO | Manager check for Manager 1: True
+2026-01-07 11:01:59 | activity | INFO | Generating tokens for Manager 1 (Manager: True) - Duration: 5m
+2026-01-07 11:01:59 | activity | INFO | Tokens generated for user: Manager 1
+2026-01-07 11:01:59 | activity | INFO | Refresh token stored for user: Manager 1
+2026-01-07 11:01:59 | activity | INFO | Login successful for user: Manager 1
+2026-01-07 11:01:59 | activity | INFO | Token validated for user: Manager 1
+2026-01-07 11:01:59 | activity | INFO | Customer search initiated by Manager 1
+2026-01-07 11:01:59 | activity | INFO | Search returned 0 results for Manager 1
+2026-01-07 11:02:02 | activity | INFO | Token validated for user: Manager 1
+2026-01-07 11:02:02 | activity | INFO | Customer search initiated by Manager 1
+2026-01-07 11:02:02 | activity | INFO | Search returned 0 results for Manager 1
+2026-01-07 11:02:16 | activity | INFO | Token validated for user: Manager 1
+2026-01-07 11:02:16 | activity | INFO | Customer search initiated by Manager 1
+2026-01-07 11:02:16 | activity | INFO | Search returned 0 results for Manager 1
+2026-01-07 11:02:34 | activity | INFO | Token validated for user: Manager 1
+2026-01-07 11:02:34 | activity | INFO | Customer search initiated by Manager 1
+2026-01-07 11:02:34 | activity | INFO | Search returned 0 results for Manager 1
+2026-01-07 11:02:35 | activity | INFO | Token validated for user: Manager 1
+2026-01-07 11:02:35 | activity | INFO | Customer search initiated by Manager 1
+2026-01-07 11:02:35 | activity | INFO | Search returned 0 results for Manager 1
+2026-01-07 11:06:00 | activity | INFO | Token refresh attempt
+2026-01-07 11:06:00 | activity | INFO | Refresh token decoded for user: Manager 1
+2026-01-07 11:06:00 | activity | INFO | Old refresh token invalidated for user: Manager 1
+2026-01-07 11:06:00 | activity | INFO | New tokens generated for user: Manager 1
+2026-01-07 11:06:00 | activity | INFO | Token refresh successful for user: Manager 1
+2026-01-07 11:06:00 | activity | INFO | Manager check for Manager 1: True
+2026-01-07 11:10:00 | activity | INFO | Token refresh attempt
+2026-01-07 11:10:00 | activity | INFO | Refresh token decoded for user: Manager 1
+2026-01-07 11:10:00 | activity | INFO | Old refresh token invalidated for user: Manager 1
+2026-01-07 11:10:00 | activity | INFO | New tokens generated for user: Manager 1
+2026-01-07 11:10:00 | activity | INFO | Token refresh successful for user: Manager 1
+2026-01-07 11:10:00 | activity | INFO | Manager check for Manager 1: True
+2026-01-07 11:14:00 | activity | INFO | Token refresh attempt
+2026-01-07 11:14:00 | activity | INFO | Refresh token decoded for user: Manager 1
+2026-01-07 11:14:00 | activity | INFO | Old refresh token invalidated for user: Manager 1
+2026-01-07 11:14:00 | activity | INFO | New tokens generated for user: Manager 1
+2026-01-07 11:14:00 | activity | INFO | Token refresh successful for user: Manager 1
+2026-01-07 11:14:00 | activity | INFO | Manager check for Manager 1: True
+2026-01-07 11:15:48 | activity | INFO | Token validated for user: Manager 1
+2026-01-07 11:15:48 | activity | INFO | Customer search initiated by Manager 1
+2026-01-07 11:15:48 | activity | INFO | Search returned 0 results for Manager 1
+2026-01-07 11:16:36 | root | INFO | ============================================================
+2026-01-07 11:16:36 | root | INFO | SERVER SHUTTING DOWN
+2026-01-07 11:16:36 | root | INFO | Timestamp: 2026-01-07T10:16:36.881490+00:00
+2026-01-07 11:16:36 | root | INFO | ============================================================
+2026-01-07 11:20:36 | root | INFO | ============================================================
+2026-01-07 11:20:36 | root | INFO | SERVER STARTING
+2026-01-07 11:20:36 | root | INFO | Timestamp: 2026-01-07T10:20:36.240011+00:00
+2026-01-07 11:20:36 | root | INFO | ============================================================
+2026-01-07 11:21:06 | activity | INFO | User creation attempt - username: Sales Agent 5, employee_id: 5
+2026-01-07 11:21:06 | activity | INFO | Employee validated for user creation
+2026-01-07 11:21:06 | activity | INFO | User created successfully - username: Sales Agent 5, employee_id: 5
+2026-01-07 11:21:20 | activity | INFO | Login attempt for user: Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | User authenticated successfully: Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | Manager check for Sales Agent 5: False
+2026-01-07 11:21:20 | activity | INFO | Generating tokens for Sales Agent 5 (Manager: False) - Duration: 2m
+2026-01-07 11:21:20 | activity | INFO | Tokens generated for user: Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | Refresh token stored for user: Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | Login successful for user: Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:20 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:23 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:23 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:23 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:26 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:26 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:26 | activity | INFO | Search returned 8 results for Sales Agent 5
+2026-01-07 11:21:28 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:28 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:28 | activity | INFO | Search returned 18 results for Sales Agent 5
+2026-01-07 11:21:37 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:37 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:37 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:44 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:44 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:44 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:44 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:44 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:44 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:45 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:45 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:45 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:45 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:45 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:45 | activity | INFO | Search returned 1 results for Sales Agent 5
+2026-01-07 11:21:47 | activity | INFO | Token validated for user: Sales Agent 5
+2026-01-07 11:21:47 | activity | INFO | Customer search initiated by Sales Agent 5
+2026-01-07 11:21:47 | activity | INFO | Search returned 18 results for Sales Agent 5
+2026-01-07 11:22:05 | root | INFO | ============================================================
+2026-01-07 11:22:05 | root | INFO | SERVER SHUTTING DOWN
+2026-01-07 11:22:05 | root | INFO | Timestamp: 2026-01-07T10:22:05.282502+00:00
+2026-01-07 11:22:05 | root | INFO | ============================================================
+2026-01-07 15:23:29 | root | INFO | ============================================================
+2026-01-07 15:23:29 | root | INFO | SERVER STARTING
+2026-01-07 15:23:29 | root | INFO | Timestamp: 2026-01-07T14:23:29.346062+00:00
+2026-01-07 15:23:29 | root | INFO | ============================================================
+2026-01-07 15:24:35 | activity | INFO | User creation attempt - username: Test User 8, employee_id: 8
+2026-01-07 15:24:35 | security | WARNING | User creation failed - incorrect authorization password
+2026-01-07 15:24:43 | activity | INFO | User creation attempt - username: Test User 8, employee_id: 8
+2026-01-07 15:24:43 | activity | INFO | Employee validated for user creation
+2026-01-07 15:24:43 | activity | INFO | User created successfully - username: Test User 8, employee_id: 8
+2026-01-07 15:25:00 | activity | INFO | Login attempt for user: Test User 8
+2026-01-07 15:25:00 | activity | INFO | User authenticated successfully: Test User 8
+2026-01-07 15:25:00 | activity | INFO | Manager check for Test User 8: False
+2026-01-07 15:25:00 | activity | INFO | Generating tokens for Test User 8 (Manager: False) - Duration: 5m
+2026-01-07 15:25:00 | activity | INFO | Tokens generated for user: Test User 8
+2026-01-07 15:25:00 | activity | INFO | Refresh token stored for user: Test User 8
+2026-01-07 15:25:00 | activity | INFO | Login successful for user: Test User 8
+2026-01-07 15:25:00 | activity | INFO | Token validated for user: Test User 8
+2026-01-07 15:25:00 | activity | INFO | Customer search initiated by Test User 8
+2026-01-07 15:25:00 | activity | INFO | Search returned 0 results for Test User 8
+2026-01-07 15:25:13 | activity | INFO | Token validated for user: Test User 8
+2026-01-07 15:25:13 | activity | INFO | Password change initiated for user: Test User 8
+2026-01-07 15:25:14 | activity | WARNING | Password change failed - complexity requirements not met for user: Test User 8
+2026-01-07 15:25:20 | activity | INFO | Token validated for user: Test User 8
+2026-01-07 15:25:20 | activity | INFO | Password change initiated for user: Test User 8
+2026-01-07 15:25:21 | activity | INFO | Password changed successfully for user: Test User 8
+2026-01-07 15:25:37 | root | INFO | ============================================================
+2026-01-07 15:25:37 | root | INFO | SERVER SHUTTING DOWN
+2026-01-07 15:25:37 | root | INFO | Timestamp: 2026-01-07T14:25:37.500522+00:00
+2026-01-07 15:25:37 | root | INFO | ============================================================

@@ -1,0 +1,52 @@
+pyscan v0.1.8 | by Aswin (https://github.com/ohaswin)
+Using requirements.txt...
+Found 48 dependencies
+|-| PyYAML [6.0.3] -> No vulnerabilities found.
+|-| rich-toolkit [0.17.1] -> No vulnerabilities found.
+|-| python-multipart [0.0.21] -> No vulnerabilities found.
+|-| httpx [0.28.1] -> No vulnerabilities found.
+|-| logging [0.4.9.6] -> No vulnerabilities found.
+|-| shellingham [1.5.4] -> No vulnerabilities found.
+|-| cryptography [46.0.3] -> No vulnerabilities found.
+|-| bcrypt [5.0.0] -> No vulnerabilities found.
+|-| rich [14.2.0] -> No vulnerabilities found.
+|-| starlette [0.50.0] -> No vulnerabilities found.
+|-| urllib3 [2.6.2] -> No vulnerabilities found.
+|-| websockets [15.0.1] -> No vulnerabilities found.
+|-| annotated-doc [0.0.4] -> No vulnerabilities found.
+|-| typing-inspection [0.4.2] -> No vulnerabilities found.
+|-| uvicorn [0.40.0] -> No vulnerabilities found.
+|-| pydantic [2.12.5] -> No vulnerabilities found.
+|-| fastapi-cloud-cli [0.8.0] -> No vulnerabilities found.
+|-| pydantic-extra-types [2.11.0] -> No vulnerabilities found.
+|-| httptools [0.7.1] -> No vulnerabilities found.
+|-| python-dotenv [1.2.1] -> No vulnerabilities found.
+|-| sentry-sdk [2.48.0] -> No vulnerabilities found.
+|-| pydantic-settings [2.12.0] -> No vulnerabilities found.
+|-| watchfiles [1.1.1] -> No vulnerabilities found.
+|-| fastar [0.8.0] -> No vulnerabilities found.
+|-| typer [0.21.0] -> No vulnerabilities found.
+|-| h11 [0.16.0] -> No vulnerabilities found.
+|-| typing_extensions [4.15.0] -> No vulnerabilities found.
+|-| idna [3.11] -> No vulnerabilities found.
+|-| Pygments [2.19.2] -> No vulnerabilities found.
+|-| anyio [4.12.0] -> No vulnerabilities found.
+|-| uvloop [0.22.1] -> No vulnerabilities found.
+|-| markdown-it-py [4.0.0] -> No vulnerabilities found.
+|-| certifi [2026.1.4] -> No vulnerabilities found.
+|-| rignore [0.7.6] -> No vulnerabilities found.
+|-| dnspython [2.8.0] -> No vulnerabilities found.
+|-| PyJWT [2.10.1] -> No vulnerabilities found.
+|-| httpcore [1.0.9] -> No vulnerabilities found.
+|-| mdurl [0.1.2] -> No vulnerabilities found.
+|-| cffi [2.0.0] -> No vulnerabilities found.
+|-| pycparser [2.23] -> No vulnerabilities found.
+|-| click [8.3.1] -> No vulnerabilities found.
+|-| Jinja2 [3.1.6] -> No vulnerabilities found.
+|-| fastapi [0.128.0] -> No vulnerabilities found.
+|-| MarkupSafe [3.0.3] -> No vulnerabilities found.
+|-| annotated-types [0.7.0] -> No vulnerabilities found.
+|-| email-validator [2.3.0] -> No vulnerabilities found.
+|-| fastapi-cli [0.0.20] -> No vulnerabilities found.
+|-| pydantic_core [2.41.5] -> No vulnerabilities found.
+Finished scanning all found dependencies.

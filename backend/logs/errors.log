@@ -1,0 +1,15 @@
+2026-01-06 15:24:05 | ERROR | ERROR | Unexpected error during token refresh for IT Staff 8 - example: no such table: refresh_tokens | /home/nicola/code/supsi/security/chinook-project/backend/server.py:290
+Traceback (most recent call last):
+  File "/home/nicola/code/supsi/security/chinook-project/backend/server.py", line 230, in refresh
+    expires_at_str = get_expiration_of_token_hash(token_hash)
+  File "/home/nicola/code/supsi/security/chinook-project/backend/db.py", line 140, in get_expiration_of_token_hash
+    cur.execute(
+    ~~~~~~~~~~~^
+        """
+        ^^^
+    ...<4 lines>...
+        (token_hash,)
+        ^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.OperationalError: no such table: refresh_tokens
